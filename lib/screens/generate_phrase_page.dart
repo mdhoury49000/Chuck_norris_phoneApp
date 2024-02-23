@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:provider/provider.dart'; // Import the provider package
-import '../phrases_cubit.dart';
+import '../blocs/phrases_cubit.dart';
 class GeneratePhrasePage extends StatefulWidget {
   @override
   _GeneratePhrasePageState createState() => _GeneratePhrasePageState();

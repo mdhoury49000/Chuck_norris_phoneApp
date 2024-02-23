@@ -1,6 +1,6 @@
-import 'package:chuck_norris_app/phrases_cubit.dart';
+import 'package:chuck_norris_app/blocs/phrases_cubit.dart';
 import 'package:flutter/material.dart';
-import './model/generate_phrase_page.dart';
+import './generate_phrase_page.dart';
 import 'collection_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
