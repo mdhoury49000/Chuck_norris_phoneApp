@@ -6,14 +6,16 @@ import 'collection_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Accueil'),
+        title: const Text('Accueil'),
         actions: [
           IconButton(
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             onPressed: () {
               Navigator.push(
                 context,
@@ -29,9 +31,9 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             Image.network(
                 'https://api.chucknorris.io/img/chucknorris_logo_coloured_small.png'),
-            SizedBox(
+            const SizedBox(
                 height:
-                    20), // Ajout d'un espace entre l'image et le premier bouton
+                    20),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -42,15 +44,15 @@ class HomePage extends StatelessWidget {
                       builder: (context, phrases) {
                         return CollectionPage(
                             phrases:
-                                phrases); // Passer la liste des phrases à la page de collection
+                                phrases);
                       },
                     ),
                   ),
                 );
               },
-              child: Text('Voir la collection'),
+              child: const Text('Voir la collection'),
             ),
-            SizedBox(height: 10), // Ajout d'un espace entre les boutons
+            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -58,7 +60,7 @@ class HomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => GeneratePhrasePage()),
                 );
               },
-              child: Text('Générer une phrase'),
+              child: const Text('Générer une phrase'),
             ),
           ],
         ),

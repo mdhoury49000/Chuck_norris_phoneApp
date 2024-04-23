@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:provider/provider.dart'; // Import the provider package
+import 'package:provider/provider.dart';
 import '../blocs/phrases_cubit.dart';
 class GeneratePhrasePage extends StatefulWidget {
+  const GeneratePhrasePage({super.key});
+
   @override
   _GeneratePhrasePageState createState() => _GeneratePhrasePageState();
 }
@@ -35,7 +37,7 @@ class _GeneratePhrasePageState extends State<GeneratePhrasePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Génération de Phrase'),
+        title: const Text('Génération de Phrase'),
       ),
       body: Center(
         child: Column(
@@ -50,15 +52,15 @@ class _GeneratePhrasePageState extends State<GeneratePhrasePage> {
     // ...
 
     context.read<PhrasesCubit>().savePhrase(phrase); // Use context.read to access the PhrasesCubit and call the savePhrase method
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text('Phrase enregistrée!'),
     ));
   },
-  child: Text('Enregistrer cette phrase'),
+  child: const Text('Enregistrer cette phrase'),
 ),
             ElevatedButton(
               onPressed: fetchPhrase,
-              child: Text('Nouvelle phrase'),
+              child: const Text('Nouvelle phrase'),
             ),
           ],
         ),

@@ -1,25 +1,26 @@
 import 'package:chuck_norris_app/screens/credit_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Paramètres'),
+        title: const Text('Paramètres'),
       ),
       body: ListView(
         children: [
           ListTile(
-            leading: Icon(Icons.apps),
-            title: Text('Catégories'),
+            leading: const Icon(Icons.apps),
+            title: const Text('Catégories'),
             onTap: () {
             },
           ),
           ListTile(
-            leading: Icon(Icons.info),
-            title: Text('Crédits'),
+            leading: const Icon(Icons.info),
+            title: const Text('Crédits'),
             onTap: () {
               Navigator.push(
                 context,

@@ -1,25 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher_string.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: CreditPage(),
-    );
-  }
-}
 
 class CreditPage extends StatelessWidget {
+  const CreditPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Crédits'),
+        title: const Text('Crédits'),
       ),
       body: const Center(
         child: Column(
@@ -49,13 +37,5 @@ class CreditPage extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-Future<void> launchURL(String url) async {
-  if (await canLaunchUrlString(url)) {
-    await launchUrlString(url);
-  } else {
-    throw 'Could not launch $url';
   }
 }
