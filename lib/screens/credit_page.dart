@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CreditPage extends StatelessWidget {
   const CreditPage({super.key});
@@ -21,21 +22,34 @@ class CreditPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 8.0),
-            Text(
-              'Antony Portebois',
-              style: TextStyle(
-                fontSize: 18.0,
+            Center(
+              child: TextButton(
+                onPressed: _launchUrlMat,
+                child: Text('Antony Portebois'),
               ),
             ),
-            Text(
-              'Mathieu Dhoury',
-              style: TextStyle(
-                fontSize: 18.0,
+            Center(
+              child: TextButton(
+                onPressed: _launchUrlAnt,
+                child: Text('Mathieu Dhoury'),
               ),
             ),
           ],
         ),
       ),
     );
+  }
+}
+
+//code pas beau mais pas possible de mettre l'url quand on appelle la fonction
+Future<void> _launchUrlMat() async {
+  if (!await launchUrl(Uri.parse('https://www.youtube.com/watch?v=h1VanNumiTg'))) {
+    throw Exception('Could not launch https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+  }
+}
+
+Future<void> _launchUrlAnt() async {
+  if (!await launchUrl(Uri.parse('https://www.youtube.com/watch?v=dQw4w9WgXcQ'))) {
+    throw Exception('Could not launch https://www.youtube.com/watch?v=dQw4w9WgXcQ');
   }
 }
