@@ -14,8 +14,19 @@ class CollectionPage extends StatelessWidget {
       body: ListView.builder(
         itemCount: phrases.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(phrases[index]),
+          return Card(
+            elevation: 4,
+            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            child: ListTile(
+              contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+              title: Text(
+                phrases[index],
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           );
         },
       ),
