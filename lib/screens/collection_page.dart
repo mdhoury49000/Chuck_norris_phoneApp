@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../blocs/phrases_cubit.dart';
 
 class CollectionPage extends StatelessWidget {
   final List<String> phrases;
@@ -26,6 +29,10 @@ class CollectionPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              trailing: Icon(Icons.delete),
+              onTap: () {
+                context.read<PhrasesCubit>().deletePhrase(phrases[index]);
+              },
             ),
           );
         },
