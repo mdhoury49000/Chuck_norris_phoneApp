@@ -14,7 +14,7 @@ class CollectionPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Collection de Phrases'),
       ),
-      body: ListView.builder(
+      body: phrases.isEmpty ? const Center(child: Text('Pas de phrases dans la collection...')) : ListView.builder(
         itemCount: phrases.length,
         itemBuilder: (context, index) {
           return Card(
