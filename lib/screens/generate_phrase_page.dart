@@ -7,10 +7,10 @@ class GeneratePhrasePage extends StatefulWidget {
   const GeneratePhrasePage({super.key});
 
   @override
-  _GeneratePhrasePageState createState() => _GeneratePhrasePageState();
+  GeneratePhrasePageState createState() => GeneratePhrasePageState();
 }
 
-class _GeneratePhrasePageState extends State<GeneratePhrasePage> {
+class GeneratePhrasePageState extends State<GeneratePhrasePage> {
   String phrase = "Chargement de la phrase...";
   List<String> categories = ["Aucune"];
   String categorieSelected = "Aucune";
