@@ -6,7 +6,7 @@ Bienvenue dans l'application Chuck Norris App, où chaque coup est une décharge
 
 ## Fonctionnalités
 
-- Génération aléatoire de phrases de Chuck Norris à la volée.
+- Génération aléatoire de phrases de Chuck Norris à la volée (avec ou sans catégorie).
 - Possibilité de sauvegarder les phrases dans sa collection.
 
 ## Comment installer
@@ -20,8 +20,12 @@ Pour profiter de la puissance des phrases de Chuck Norris sur votre appareil, su
 
 ## Technologies utilisées
 
-- Flutter
-- Dart
+- Flutter 3.19.0
+- Dart 3.3.0
+
+## API utilisé
+
+https://api.chucknorris.io/
 
 ## Auteur
 
