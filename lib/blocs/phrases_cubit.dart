@@ -27,4 +27,12 @@ class PhrasesCubit extends Cubit<List<String>> {
     await prefs.setStringList('savedPhrases', currentPhrases);
     emit(currentPhrases);
   }
+
+  void deleteAllPhrases() async {
+    final prefs = await SharedPreferences.getInstance();
+    var currentPhrases = List<String>.from(state);
+    currentPhrases = [];
+    await prefs.setStringList('savedPhrases', currentPhrases);
+    emit(currentPhrases);
+  }
 }
