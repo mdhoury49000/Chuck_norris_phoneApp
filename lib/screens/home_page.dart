@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SettingsPage()),
+                MaterialPageRoute(builder: (context) => const SettingsPage()),
               );
             },
           ),
@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => GeneratePhrasePage()),
+                  MaterialPageRoute(builder: (context) => const GeneratePhrasePage()),
                 );
               },
               child: const Text('Générer une phrase'),
