@@ -12,8 +12,8 @@ class GeneratePhrasePage extends StatefulWidget {
 
 class _GeneratePhrasePageState extends State<GeneratePhrasePage> {
   String phrase = "Chargement de la phrase...";
-  List<String> categories = [""];
-  String categorieSelected = "";
+  List<String> categories = ["Aucune"];
+  String categorieSelected = "Aucune";
 
   @override
   void initState() {
@@ -24,7 +24,7 @@ class _GeneratePhrasePageState extends State<GeneratePhrasePage> {
 
   fetchPhrase() async {
     var url = 'https://api.chucknorris.io/jokes/random';
-    if (categorieSelected != "") {
+    if (categorieSelected != "Aucune") {
       url += '?category=$categorieSelected';
     }
     final response = await http.get(Uri.parse(url));
@@ -83,27 +83,34 @@ class _GeneratePhrasePageState extends State<GeneratePhrasePage> {
               onPressed: fetchPhrase,
               child: const Text('Nouvelle phrase'),
             ),
-            DropdownButton<String>(
-              value: categorieSelected,
-              icon: const Icon(Icons.arrow_downward),
-              elevation: 16,
-              style: const TextStyle(color: Colors.deepPurple),
-              underline: Container(
-                height: 2,
-                color: Colors.deepPurpleAccent,
-              ),
-              onChanged: (String? value) {
-                setState(() {
-                  categorieSelected = value!;
-                });
-              },
-              items: categories.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            )
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text('Catégories :  ', textAlign: TextAlign.center),
+                DropdownButton<String>(
+                  value: categorieSelected,
+                  icon: const Icon(Icons.arrow_downward),
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.deepPurple),
+                  underline: Container(
+                    height: 2,
+                    color: Colors.deepPurpleAccent,
+                  ),
+                  onChanged: (String? value) {
+                    setState(() {
+                      categorieSelected = value!;
+                    });
+                  },
+                  items: categories.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+              ],
+            ),
+
           ],
         ),
       ),
