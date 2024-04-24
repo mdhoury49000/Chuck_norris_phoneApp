@@ -12,15 +12,22 @@ class GeneratePhrasePage extends StatefulWidget {
 
 class _GeneratePhrasePageState extends State<GeneratePhrasePage> {
   String phrase = "Chargement de la phrase...";
+  List<String> categories = [""];
+  String categorieSelected = "";
 
   @override
   void initState() {
     super.initState();
     fetchPhrase();
+    fetchCategories();
   }
 
   fetchPhrase() async {
-    final response = await http.get(Uri.parse('https://api.chucknorris.io/jokes/random'));
+    var url = 'https://api.chucknorris.io/jokes/random';
+    if (categorieSelected != "") {
+      url += '?category=$categorieSelected';
+    }
+    final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       setState(() {
@@ -29,6 +36,22 @@ class _GeneratePhrasePageState extends State<GeneratePhrasePage> {
     } else {
       setState(() {
         phrase = "Erreur de chargement";
+      });
+    }
+  }
+
+  fetchCategories() async {
+    final response = await http.get(Uri.parse('https://api.chucknorris.io/jokes/categories'));
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      for (String categorie in data) {
+        setState(() {
+          categories.add(categorie);
+        });
+      }
+    } else {
+      setState(() {
+        categories = ["Erreur de chargement"];
       });
     }
   }
@@ -48,20 +71,39 @@ class _GeneratePhrasePageState extends State<GeneratePhrasePage> {
               child: Text(phrase, textAlign: TextAlign.center),
             ),
            ElevatedButton(
-  onPressed: () {
-    // ...
-
-    context.read<PhrasesCubit>().savePhrase(phrase); // Use context.read to access the PhrasesCubit and call the savePhrase method
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text('Phrase enregistrée!'),
-    ));
-  },
-  child: const Text('Enregistrer cette phrase'),
-),
+              onPressed: () {
+                context.read<PhrasesCubit>().savePhrase(phrase);
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text('Phrase enregistrée!'),
+                ));
+              },
+              child: const Text('Enregistrer cette phrase'),
+            ),
             ElevatedButton(
               onPressed: fetchPhrase,
               child: const Text('Nouvelle phrase'),
             ),
+            DropdownButton<String>(
+              value: categorieSelected,
+              icon: const Icon(Icons.arrow_downward),
+              elevation: 16,
+              style: const TextStyle(color: Colors.deepPurple),
+              underline: Container(
+                height: 2,
+                color: Colors.deepPurpleAccent,
+              ),
+              onChanged: (String? value) {
+                setState(() {
+                  categorieSelected = value!;
+                });
+              },
+              items: categories.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            )
           ],
         ),
       ),
